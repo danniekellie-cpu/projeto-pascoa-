@@ -8,86 +8,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  overflow-x: hidden;
-  color: white;
-  background: linear-gradient(-45deg, #87CEFA, #bde0fe, #e0f7ff, #cfe9ff);
-  background-size: 400% 400%;
-  animation: ceuMovendo 10s ease infinite;
-}
-
-@keyframes ceuMovendo {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* NUVENS */
-.nuvens {  
-  position: fixed;  
-  top: 0;  
-  left: 0;  
-  width: 200%;  
-  height: 100%;  
-  background: url('https://i.imgur.com/3ZQ3Z4V.png') repeat-x;  
-  opacity: 0.3;  
-  animation: nuvensMovendo 60s linear infinite;  
-  z-index: 0;  
-}  
-
-@keyframes nuvensMovendo {  
-  from { transform: translateX(0); }  
-  to { transform: translateX(-50%); }  
-}
-
-/* SEÇÕES */
-section {
-  height: 100vh;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(to bottom, #003366, #0055aa);
   text-align: center;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
-}
-
-/* TEXTO */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1.5s;
-}
-
-.fade.aparecer {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* IMAGENS */
-img {
-  max-width: 280px;
-  margin-top: 20px;
-  border-radius: 12px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: 1.5s;
-}
-
-img.aparecer {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* LEÃO EXPLOSÃO */
-#leao {
-  animation: explosao 2s ease-out forwards;
-}
-
-@keyframes explosao {
-  0% { transform: scale(0.5); opacity: 0; filter: brightness(1); }
-  50% { transform: scale(1.3); opacity: 1; filter: brightness(3); }
-  100% { transform: scale(1); filter: brightness(1.5); }
 }
 
 /* TELA INICIAL */
@@ -95,91 +17,173 @@ img.aparecer {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: black;
+  background: #001a33;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
   flex-direction: column;
-  text-align: center;
+  color: white;
+  z-index: 10;
 }
 
-#inicio h1 {
-  animation: piscar 1.5s infinite;
+/* CONTAINER */
+.container {
+  display: none;
+  padding: 20px;
 }
 
-@keyframes piscar {
-  0% {opacity: 1;}
-  50% {opacity: 0.4;}
-  100% {opacity: 1;}
+/* QUADRINHOS */
+.quadro {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 350px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.quadro h2 {
+  color: #003366;
+}
+
+.quadro p {
+  color: #333;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* LEÃO DESTAQUE */
+#leao {
+  animation: explosao 1.5s ease-out;
+}
+
+@keyframes explosao {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
 }
 </style>
 </head>
 
 <body>
 
+<!-- INÍCIO -->
 <div id="inicio" onclick="comecar()">
   <h1>▶ Clique para começar</h1>
-  <p>Uma história de amor...</p>
+  <p>Uma história de amor que mudou tudo...</p>
 </div>
 
-<div class="nuvens"></div>
-
+<!-- MÚSICA -->
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<section>
-  <h1 class="fade">Ele não fugiu...</h1>
-  <p class="fade">Como um cordeiro, Ele ficou por amor.</p>
-  <img src="cordeiro.jpg">
-</section>
+<!-- HISTÓRIA -->
+<div class="container">
 
-<section>
-  <h1 class="fade">A cruz carregou tudo</h1>
-  <p class="fade">Era nosso... mas Ele tomou o lugar.</p>
-  <img src="cruz.jpg">
-</section>
+  <div class="quadro">
+    <h2>Ele poderia ter ido embora...</h2>
+    <p>
+      Ele sabia de tudo que viria.  
+      A dor, o sofrimento, a cruz...  
+      Mesmo assim, Ele ficou.  
+      Não por obrigação…  
+      mas por amor.
+    </p>
+    <img src="cordeiro.jpg">
+  </div>
 
-<section>
-  <h1 class="fade">Parecia o fim...</h1>
-  <p class="fade">O silêncio tomou conta.</p>
-  <img src="tumba.jpg">
-</section>
+  <div class="quadro">
+    <h2>O peso não era dEle</h2>
+    <p>
+      Cada erro, cada falha, cada dor...  
+      era nossa.  
+      Mas Ele tomou tudo sobre si.  
+      Em silêncio, como um cordeiro…  
+      Ele se entregou.
+    </p>
+    <img src="cruz.jpg">
+  </div>
 
-<section>
-  <h1 class="fade">MAS ELE VIVE!</h1>
-  <p class="fade">A morte foi vencida! 🦁🔥</p>
-  <img src="leao.jpg" id="leao">
-</section>
+  <div class="quadro">
+    <h2>Parecia o fim</h2>
+    <p>
+      O céu se calou.  
+      A esperança parecia perdida.  
+      A pedra foi fechada...  
+      e tudo ficou em silêncio.
+    </p>
+    <img src="tumba.jpg">
+  </div>
 
-<section>
-  <h1 class="fade">Foi por você</h1>
-  <p class="fade">Um amor que venceu tudo.</p>
-</section>
+  <div class="quadro">
+    <h2>Mas Deus não havia terminado</h2>
+    <p>
+      Mesmo quando ninguém via...  
+      algo estava acontecendo.  
+      O silêncio não era o fim.  
+      Era só o começo de algo maior.
+    </p>
+  </div>
+
+  <div class="quadro">
+    <h2>ELE VIVE! 🦁🔥</h2>
+    <p>
+      No terceiro dia...  
+      a morte foi vencida.  
+      A pedra foi removida.  
+      E a esperança voltou a viver.
+    </p>
+
+    <p>
+      Esse leão não é apenas um presente…  
+      ele representa a vitória, a vida  
+      e o amor que venceu a morte.
+    </p>
+
+    <p>
+      Assim como Ele vive,  
+      esse símbolo é um lembrete  
+      de que nunca foi o fim.
+    </p>
+
+    <img src="leao.jpg" id="leao">
+  </div>
+
+  <div class="quadro">
+    <h2>Foi por você 💛</h2>
+    <p>
+      Nada disso foi por acaso.  
+      Foi amor.  
+      Foi entrega.  
+      Foi sacrifício.
+    </p>
+
+    <p>
+      E assim como esse símbolo representa a vida…  
+      esse presente também carrega um significado.
+    </p>
+
+    <p>
+      Um amor que continua vivo  
+      até hoje…  
+      por mim e por você.
+    </p>
+  </div>
+
+</div>
 
 <script>
 function comecar() {
   document.getElementById("inicio").style.display = "none";
-
-  document.querySelectorAll("section").forEach(sec => {
-    sec.style.display = "flex";
-  });
-
+  document.querySelector(".container").style.display = "block";
   document.getElementById("musica").play();
 }
-
-const elementos = document.querySelectorAll(".fade, img");
-
-window.addEventListener("scroll", () => {
-  elementos.forEach(el => {
-    const pos = el.getBoundingClientRect().top;
-
-    if (pos < window.innerHeight - 50) {
-      el.classList.add("aparecer");
-    }
-  });
-});
 </script>
 
 </body>
