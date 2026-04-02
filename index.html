@@ -1,44 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Surpresa de Páscoa</title>
-    <style>
-        body { font-family: sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
-        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .botao-surpresa { background-color: #ffcc00; padding: 15px 30px; font-size: 18px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; }
-        #conteudo { display: none; margin-top: 20px; }
-        img { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 2px solid #5d3fd3; }
-    </style>
+<meta charset="UTF-8">
+<title>Foi Por Amor</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  color: white;
+}
+
+/* TELA INICIAL */
+#inicio {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  flex-direction: column;
+  text-align: center;
+}
+
+#inicio h1 {
+  font-size: 2em;
+  animation: piscar 1.5s infinite;
+}
+
+@keyframes piscar {
+  0% {opacity: 1;}
+  50% {opacity: 0.4;}
+  100% {opacity: 1;}
+}
+
+/* SEÇÕES */
+section {
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* FUNDOS */
+.escuro { background: black; }
+.triste { background: #111; }
+.tumba { background: #000; }
+.gloria { background: linear-gradient(to top, gold, orange); color: black; }
+
+/* TEXTO */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1.5s;
+}
+
+.fade.aparecer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* IMAGENS */
+img {
+  max-width: 280px;
+  margin-top: 20px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 1.5s;
+}
+
+img.aparecer {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 🦁 LEÃO EXPLOSÃO */
+.leao {
+  animation: explosao 2s ease-out forwards;
+}
+
+@keyframes explosao {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    filter: brightness(3);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+}
+
+/* brilho texto */
+.gloria h1 {
+  animation: brilho 1.5s infinite alternate;
+}
+
+@keyframes brilho {
+  from { text-shadow: 0 0 10px gold; }
+  to { text-shadow: 0 0 30px orange; }
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Uma surpresa para você! 🍫</h1>
-        <button class="botao-surpresa" onclick="revelar()">ABRIR SURPRESA ✨</button>
-        
-        <div id="conteudo">
-            <audio id="musica"><source src="musica.mp3" type="audio/mpeg"></audio>
-            
-            <img src="cordeiro.jpg" alt="Cordeiro">
-            <p>"Ele se entregou por nós..."</p>
-            
-            <img src="cruz.jpg" alt="Cruz">
-            <p>"Pagou o preço na cruz."</p>
-            
-            <img src="ressurreicao.jpg" alt="Ressurreição">
-            <p>"Ele RESSUSCITOU!"</p>
-            
-            <img src="leao-presente.jpg" alt="Leão">
-            <p>"O Leão da Tribo de Judá!"</p>
-        </div>
-    </div>
-    <script>
-        function revelar() {
-            document.getElementById('conteudo').style.display = 'block';
-            var som = document.getElementById('musica');
-            som.play();
-            document.querySelector('.botao-surpresa').style.display = 'none';
-        }
-    </script>
+
+<!-- TELA INICIAL -->
+<div id="inicio" onclick="comecar()">
+  <h1>▶ Clique para começar</h1>
+  <p>Uma história de amor...</p>
+</div>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🐑 -->
+<section class="escuro">
+  <h1 class="fade">Ele não fugiu...</h1>
+  <p class="fade">Como um cordeiro, Ele ficou... por amor.</p>
+  <img src="cordeiro.jpg">
+</section>
+
+<!-- ✝️ -->
+<section class="triste">
+  <h1 class="fade">A cruz carregou tudo</h1>
+  <p class="fade">Era nosso... mas Ele tomou o lugar.</p>
+  <img src="cruz.jpg">
+</section>
+
+<!-- 🪦 -->
+<section class="tumba">
+  <h1 class="fade">O silêncio tomou conta</h1>
+  <p class="fade">Parecia o fim...</p>
+  <img src="tumba.jpg">
+</section>
+
+<!-- 🦁 -->
+<section class="gloria">
+  <h1 class="fade">MAS ELE VIVE!</h1>
+  <p class="fade">A morte foi vencida! 🦁🔥</p>
+  <img src="leao.jpg" id="leao">
+</section>
+
+<!-- FINAL -->
+<section class="escuro">
+  <h1 class="fade">Foi por você</h1>
+  <p class="fade">Um amor que venceu tudo.</p>
+</section>
+
+<script>
+function comecar() {
+  document.getElementById("inicio").style.display = "none";
+
+  document.querySelectorAll("section").forEach(sec => {
+    sec.style.display = "flex";
+  });
+
+  document.getElementById("musica").play();
+}
+
+/* ANIMAÇÃO */
+const elementos = document.querySelectorAll(".fade, img");
+
+window.addEventListener("scroll", () => {
+  elementos.forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+
+    if (pos < window.innerHeight - 50) {
+      el.classList.add("aparecer");
+    }
+  });
+
+  // LEÃO EXPLOSÃO
+  const leao = document.getElementById("leao");
+  if (leao.getBoundingClientRect().top < window.innerHeight - 50) {
+    leao.classList.add("leao");
+  }
+});
+</script>
+
 </body>
 </html>
