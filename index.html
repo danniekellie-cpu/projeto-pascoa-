@@ -10,7 +10,169 @@ body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #003366, #0055aa);
   text-align: center;
+}<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Foi Por Amor</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #4da6ff, #1e90ff);
+  text-align: center;
 }
+
+/* TELA INICIAL */
+#inicio {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #1e90ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  z-index: 10;
+}
+
+/* CONTAINER */
+.container {
+  display: none;
+  padding: 20px;
+}
+
+/* QUADRINHOS */
+.quadro {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 350px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.quadro h2 {
+  color: #1e3a5f;
+}
+
+.quadro p {
+  color: #333;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* LEÃO */
+#leao {
+  animation: explosao 1.5s ease-out;
+}
+
+@keyframes explosao {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="inicio" onclick="comecar()">
+  <h1>▶ Clique para começar</h1>
+  <p>Uma história de amor que mudou tudo...</p>
+</div>
+
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+  <div class="quadro">
+    <h2>Ele poderia ter ido embora...</h2>
+    <p>
+      Ele sabia de tudo que viria.  
+      Mesmo assim, ficou…  
+      não por obrigação,  
+      mas por amor.
+    </p>
+    <img src="cordeiro.jpg">
+  </div>
+
+  <div class="quadro">
+    <h2>O peso não era dEle</h2>
+    <p>
+      Cada erro era nosso…  
+      mas Ele tomou tudo sobre si.  
+      Em silêncio… se entregou.
+    </p>
+    <img src="cruz.jpg">
+  </div>
+
+  <div class="quadro">
+    <h2>Parecia o fim</h2>
+    <p>
+      A pedra foi fechada.  
+      O céu se calou…  
+      e tudo ficou em silêncio.
+    </p>
+    <img src="tumba.jpg">
+  </div>
+
+  <div class="quadro">
+    <h2>Mas não era o fim</h2>
+    <p>
+      Mesmo no silêncio…  
+      Deus estava agindo.
+    </p>
+  </div>
+
+  <div class="quadro">
+    <h2>ELE VIVE! 🦁🔥</h2>
+    <p>
+      A morte foi vencida.  
+      A esperança voltou.
+    </p>
+
+    <p>
+      Esse leão representa a vida,  
+      a força e a vitória  
+      que venceu a morte.
+    </p>
+
+    <img src="leao.jpg" id="leao">
+  </div>
+
+  <div class="quadro">
+    <h2>Foi por você 💛</h2>
+    <p>
+      Nada disso foi por acaso…  
+      foi por amor.  
+      Um amor que continua vivo.
+    </p>
+  </div>
+
+</div>
+
+<script>
+function comecar() {
+  document.getElementById("inicio").style.display = "none";
+  document.querySelector(".container").style.display = "block";
+
+  var audio = document.getElementById("musica");
+  audio.play().catch(() => {});
+}
+</script>
+
+</body>
+</html>
 
 /* TELA INICIAL */
 #inicio {
