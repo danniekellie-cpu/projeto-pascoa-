@@ -10,31 +10,33 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   color: white;
+  background: linear-gradient(-45deg, #87CEFA, #bde0fe, #e0f7ff, #cfe9ff);
+  background-size: 400% 400%;
+  animation: ceuMovendo 10s ease infinite;
 }
 
-/* TELA INICIAL */
-#inicio {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  flex-direction: column;
-  text-align: center;
+@keyframes ceuMovendo {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-#inicio h1 {
-  font-size: 2em;
-  animation: piscar 1.5s infinite;
-}
+/* NUVENS */
+.nuvens {  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  width: 200%;  
+  height: 100%;  
+  background: url('https://i.imgur.com/3ZQ3Z4V.png') repeat-x;  
+  opacity: 0.3;  
+  animation: nuvensMovendo 60s linear infinite;  
+  z-index: 0;  
+}  
 
-@keyframes piscar {
-  0% {opacity: 1;}
-  50% {opacity: 0.4;}
-  100% {opacity: 1;}
+@keyframes nuvensMovendo {  
+  from { transform: translateX(0); }  
+  to { transform: translateX(-50%); }  
 }
 
 /* SEÇÕES */
@@ -46,13 +48,9 @@ section {
   align-items: center;
   text-align: center;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
-
-/* FUNDOS */
-.escuro { background: black; }
-.triste { background: #111; }
-.tumba { background: #000; }
-.gloria { background: linear-gradient(to top, gold, orange); color: black; }
 
 /* TEXTO */
 .fade {
@@ -81,82 +79,81 @@ img.aparecer {
   transform: scale(1);
 }
 
-/* 🦁 LEÃO EXPLOSÃO */
-.leao {
+/* LEÃO EXPLOSÃO */
+#leao {
   animation: explosao 2s ease-out forwards;
 }
 
 @keyframes explosao {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-    filter: brightness(1);
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-    filter: brightness(3);
-  }
-  100% {
-    transform: scale(1);
-    filter: brightness(1.5);
-  }
+  0% { transform: scale(0.5); opacity: 0; filter: brightness(1); }
+  50% { transform: scale(1.3); opacity: 1; filter: brightness(3); }
+  100% { transform: scale(1); filter: brightness(1.5); }
 }
 
-/* brilho texto */
-.gloria h1 {
-  animation: brilho 1.5s infinite alternate;
+/* TELA INICIAL */
+#inicio {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  flex-direction: column;
+  text-align: center;
 }
 
-@keyframes brilho {
-  from { text-shadow: 0 0 10px gold; }
-  to { text-shadow: 0 0 30px orange; }
+#inicio h1 {
+  animation: piscar 1.5s infinite;
+}
+
+@keyframes piscar {
+  0% {opacity: 1;}
+  50% {opacity: 0.4;}
+  100% {opacity: 1;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TELA INICIAL -->
 <div id="inicio" onclick="comecar()">
   <h1>▶ Clique para começar</h1>
   <p>Uma história de amor...</p>
 </div>
 
+<div class="nuvens"></div>
+
 <audio id="musica" loop>
   <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🐑 -->
-<section class="escuro">
+<section>
   <h1 class="fade">Ele não fugiu...</h1>
-  <p class="fade">Como um cordeiro, Ele ficou... por amor.</p>
+  <p class="fade">Como um cordeiro, Ele ficou por amor.</p>
   <img src="cordeiro.jpg">
 </section>
 
-<!-- ✝️ -->
-<section class="triste">
+<section>
   <h1 class="fade">A cruz carregou tudo</h1>
   <p class="fade">Era nosso... mas Ele tomou o lugar.</p>
   <img src="cruz.jpg">
 </section>
 
-<!-- 🪦 -->
-<section class="tumba">
-  <h1 class="fade">O silêncio tomou conta</h1>
-  <p class="fade">Parecia o fim...</p>
+<section>
+  <h1 class="fade">Parecia o fim...</h1>
+  <p class="fade">O silêncio tomou conta.</p>
   <img src="tumba.jpg">
 </section>
 
-<!-- 🦁 -->
-<section class="gloria">
+<section>
   <h1 class="fade">MAS ELE VIVE!</h1>
   <p class="fade">A morte foi vencida! 🦁🔥</p>
   <img src="leao.jpg" id="leao">
 </section>
 
-<!-- FINAL -->
-<section class="escuro">
+<section>
   <h1 class="fade">Foi por você</h1>
   <p class="fade">Um amor que venceu tudo.</p>
 </section>
@@ -172,7 +169,6 @@ function comecar() {
   document.getElementById("musica").play();
 }
 
-/* ANIMAÇÃO */
 const elementos = document.querySelectorAll(".fade, img");
 
 window.addEventListener("scroll", () => {
@@ -183,12 +179,6 @@ window.addEventListener("scroll", () => {
       el.classList.add("aparecer");
     }
   });
-
-  // LEÃO EXPLOSÃO
-  const leao = document.getElementById("leao");
-  if (leao.getBoundingClientRect().top < window.innerHeight - 50) {
-    leao.classList.add("leao");
-  }
 });
 </script>
 
