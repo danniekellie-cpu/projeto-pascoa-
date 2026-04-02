@@ -8,20 +8,9 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #003366, #0055aa);
+  background: #1e90ff;
   text-align: center;
-}<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Foi Por Amor</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #4da6ff, #1e90ff);
-  text-align: center;
+  color: white;
 }
 
 /* TELA INICIAL */
@@ -41,35 +30,35 @@ body {
 /* CONTAINER */
 .container {
   display: none;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
-/* QUADRINHOS */
+/* QUADROS (SEM FUNDO BRANCO) */
 .quadro {
-  background: white;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 15px;
+  margin: 40px auto;
   max-width: 350px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-.quadro h2 {
-  color: #1e3a5f;
+/* TEXTO */
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
-.quadro p {
-  color: #333;
-  line-height: 1.5;
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
+/* IMAGEM */
 img {
   max-width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
+  border-radius: 12px;
+  margin-top: 15px;
 }
 
-/* LEÃO */
+/* LEÃO DESTAQUE */
 #leao {
   animation: explosao 1.5s ease-out;
 }
@@ -78,6 +67,13 @@ img {
   0% { transform: scale(0.5); opacity: 0; }
   60% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); }
+}
+
+/* FINAL MAIS BONITO */
+.final {
+  margin-top: 60px;
+  font-size: 18px;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -98,9 +94,9 @@ img {
   <div class="quadro">
     <h2>Ele poderia ter ido embora...</h2>
     <p>
-      Ele sabia de tudo que viria.  
-      Mesmo assim, ficou…  
-      não por obrigação,  
+      Mesmo sabendo de tudo…  
+      Ele ficou.  
+      Não por obrigação,  
       mas por amor.
     </p>
     <img src="cordeiro.jpg">
@@ -110,7 +106,7 @@ img {
     <h2>O peso não era dEle</h2>
     <p>
       Cada erro era nosso…  
-      mas Ele tomou tudo sobre si.  
+      mas Ele levou tudo.  
       Em silêncio… se entregou.
     </p>
     <img src="cruz.jpg">
@@ -119,9 +115,8 @@ img {
   <div class="quadro">
     <h2>Parecia o fim</h2>
     <p>
-      A pedra foi fechada.  
-      O céu se calou…  
-      e tudo ficou em silêncio.
+      O silêncio tomou conta…  
+      e tudo parecia acabado.
     </p>
     <img src="tumba.jpg">
   </div>
@@ -143,19 +138,18 @@ img {
 
     <p>
       Esse leão representa a vida,  
-      a força e a vitória  
+      a vitória e o amor  
       que venceu a morte.
     </p>
 
     <img src="leao.jpg" id="leao">
   </div>
 
-  <div class="quadro">
-    <h2>Foi por você 💛</h2>
+  <div class="quadro final">
     <p>
-      Nada disso foi por acaso…  
-      foi por amor.  
-      Um amor que continua vivo.
+      Foi por você 💛  
+      Um amor que continua vivo…  
+      para sempre.
     </p>
   </div>
 
@@ -168,183 +162,6 @@ function comecar() {
 
   var audio = document.getElementById("musica");
   audio.play().catch(() => {});
-}
-</script>
-
-</body>
-</html>
-
-/* TELA INICIAL */
-#inicio {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #001a33;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-  z-index: 10;
-}
-
-/* CONTAINER */
-.container {
-  display: none;
-  padding: 20px;
-}
-
-/* QUADRINHOS */
-.quadro {
-  background: white;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 15px;
-  max-width: 350px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-.quadro h2 {
-  color: #003366;
-}
-
-.quadro p {
-  color: #333;
-  line-height: 1.5;
-}
-
-img {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-/* LEÃO DESTAQUE */
-#leao {
-  animation: explosao 1.5s ease-out;
-}
-
-@keyframes explosao {
-  0% { transform: scale(0.5); opacity: 0; }
-  60% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
-}
-</style>
-</head>
-
-<body>
-
-<!-- INÍCIO -->
-<div id="inicio" onclick="comecar()">
-  <h1>▶ Clique para começar</h1>
-  <p>Uma história de amor que mudou tudo...</p>
-</div>
-
-<!-- MÚSICA -->
-<audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<!-- HISTÓRIA -->
-<div class="container">
-
-  <div class="quadro">
-    <h2>Ele poderia ter ido embora...</h2>
-    <p>
-      Ele sabia de tudo que viria.  
-      A dor, o sofrimento, a cruz...  
-      Mesmo assim, Ele ficou.  
-      Não por obrigação…  
-      mas por amor.
-    </p>
-    <img src="cordeiro.jpg">
-  </div>
-
-  <div class="quadro">
-    <h2>O peso não era dEle</h2>
-    <p>
-      Cada erro, cada falha, cada dor...  
-      era nossa.  
-      Mas Ele tomou tudo sobre si.  
-      Em silêncio, como um cordeiro…  
-      Ele se entregou.
-    </p>
-    <img src="cruz.jpg">
-  </div>
-
-  <div class="quadro">
-    <h2>Parecia o fim</h2>
-    <p>
-      O céu se calou.  
-      A esperança parecia perdida.  
-      A pedra foi fechada...  
-      e tudo ficou em silêncio.
-    </p>
-    <img src="tumba.jpg">
-  </div>
-
-  <div class="quadro">
-    <h2>Mas Deus não havia terminado</h2>
-    <p>
-      Mesmo quando ninguém via...  
-      algo estava acontecendo.  
-      O silêncio não era o fim.  
-      Era só o começo de algo maior.
-    </p>
-  </div>
-
-  <div class="quadro">
-    <h2>ELE VIVE! 🦁🔥</h2>
-    <p>
-      No terceiro dia...  
-      a morte foi vencida.  
-      A pedra foi removida.  
-      E a esperança voltou a viver.
-    </p>
-
-    <p>
-      Esse leão não é apenas um presente…  
-      ele representa a vitória, a vida  
-      e o amor que venceu a morte.
-    </p>
-
-    <p>
-      Assim como Ele vive,  
-      esse símbolo é um lembrete  
-      de que nunca foi o fim.
-    </p>
-
-    <img src="leao.jpg" id="leao">
-  </div>
-
-  <div class="quadro">
-    <h2>Foi por você 💛</h2>
-    <p>
-      Nada disso foi por acaso.  
-      Foi amor.  
-      Foi entrega.  
-      Foi sacrifício.
-    </p>
-
-    <p>
-      E assim como esse símbolo representa a vida…  
-      esse presente também carrega um significado.
-    </p>
-
-    <p>
-      Um amor que continua vivo  
-      até hoje…  
-      por mim e por você.
-    </p>
-  </div>
-
-</div>
-
-<script>
-function comecar() {
-  document.getElementById("inicio").style.display = "none";
-  document.querySelector(".container").style.display = "block";
-  document.getElementById("musica").play();
 }
 </script>
 
