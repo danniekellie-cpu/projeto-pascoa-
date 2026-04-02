@@ -2,73 +2,42 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uma Surpresa de Páscoa Especial</title>
+    <title>Surpresa de Páscoa</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: #5d3fd3; }
-        .botao-surpresa { background-color: #ffcc00; color: #333; padding: 20px 40px; font-size: 20px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .botao-surpresa:hover { background-color: #ffdb4d; transform: scale(1.05); }
-        #conteudo-secreto { display: none; margin-top: 30px; }
-        .quadro-hq { border: 3px solid #5d3fd3; border-radius: 10px; margin-bottom: 20px; padding: 10px; background: #fafafa; }
-        .quadro-hq img { width: 100%; border-radius: 5px; max-height: 400px; object-fit: contain; }
-        .legenda { font-style: italic; color: #555; margin-top: 10px; font-size: 1.1em; font-weight: 500; }
-        .musica-status { color: #28a745; font-weight: bold; margin-bottom: 15px; }
+        body { font-family: sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .botao-surpresa { background-color: #ffcc00; padding: 15px 30px; font-size: 18px; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; }
+        #conteudo { display: none; margin-top: 20px; }
+        img { width: 100%; border-radius: 10px; margin-bottom: 15px; border: 2px solid #5d3fd3; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Preparei algo para você... 🍫</h1>
-        <p>Clique no botão abaixo para abrir sua surpresa de Páscoa!</p>
+        <h1>Uma surpresa para você! 🍫</h1>
+        <button class="botao-surpresa" onclick="revelar()">ABRIR SURPRESA ✨</button>
         
-        <button class="botao-surpresa" onclick="revelarSurpresa()">ABRIR SURPRESA ✨</button>
-
-        <div id="conteudo-secreto">
-            <p class="musica-status">🎵 Ouvindo: Fernandinho - Galileu</p>
+        <div id="conteudo">
+            <audio id="musica"><source src="musica.mp3" type="audio/mpeg"></audio>
             
-            <audio id="musica-galileu">
-                <source src="musica.mp3" type="audio/mpeg">
-                Seu navegador não suporta áudio.
-            </audio>
-
-            <div class="quadro-hq">
-                <img src="cordeiro.jpg" alt="O Cordeiro">
-                <p class="legenda">"Ele foi o Cordeiro que se entregou por nós..."</p>
-            </div>
-
-            <div class="quadro-hq">
-                <img src="cruz.jpg" alt="A Cruz">
-                <p class="legenda">"Pela cruz, pagou o preço do nosso pecado."</p>
-            </div>
-
-            <div class="quadro-hq">
-                <img src="ressurreição.jpg" alt="A Ressurreição">
-                <p class="legenda">"Mas a morte não o segurou. Ele RESSUSCITOU!"</p>
-            </div>
-
-            <div class="quadro-hq">
-                <img src="leao-presente.png" alt="O Leão da Tribo de Judá">
-                <p class="legenda">"Deixou de ser Cordeiro e se tornou o LEÃO! Ele vive e reina para sempre."</p>
-            </div>
-
-            <h2 style="color: #5d3fd3;">Feliz Páscoa! ❤️</h2>
+            <img src="cordeiro.jpg" alt="Cordeiro">
+            <p>"Ele se entregou por nós..."</p>
+            
+            <img src="cruz.jpg" alt="Cruz">
+            <p>"Pagou o preço na cruz."</p>
+            
+            <img src="ressurreicao.jpg" alt="Ressurreição">
+            <p>"Ele RESSUSCITOU!"</p>
+            
+            <img src="leao-presente.jpg" alt="Leão">
+            <p>"O Leão da Tribo de Judá!"</p>
         </div>
     </div>
-
     <script>
-        function revelarSurpresa() {
-            document.getElementById('conteudo-secreto').style.display = 'block';
-            var musica = document.getElementById('musica-galileu');
-            
-            // Tentativa de tocar a música
-            musica.play().catch(function(error) {
-                console.log("A música não pôde tocar automaticamente: ", error);
-            });
-            
+        function revelar() {
+            document.getElementById('conteudo').style.display = 'block';
+            var som = document.getElementById('musica');
+            som.play();
             document.querySelector('.botao-surpresa').style.display = 'none';
-            window.scrollTo({ top: 100, behavior: 'smooth' });
         }
     </script>
 </body>
