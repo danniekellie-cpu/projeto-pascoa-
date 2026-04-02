@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uma Surpresa de Páscoa Especial</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: #5d3fd3; }
         .botao-surpresa { background-color: #ffcc00; color: #333; padding: 20px 40px; font-size: 20px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
@@ -44,7 +44,7 @@
             </div>
 
             <div class="quadro-hq">
-                <img src="ressurreicao.jpg" alt="A Ressurreição">
+                <img src="ressurreição.jpg" alt="A Ressurreição">
                 <p class="legenda">"Mas a morte não o segurou. Ele RESSUSCITOU!"</p>
             </div>
 
@@ -59,17 +59,15 @@
 
     <script>
         function revelarSurpresa() {
-            // Mostra o conteúdo
             document.getElementById('conteudo-secreto').style.display = 'block';
-            
-            // Toca a música
             var musica = document.getElementById('musica-galileu');
-            musica.play();
             
-            // Esconde o botão após clicar
+            // Tentativa de tocar a música
+            musica.play().catch(function(error) {
+                console.log("A música não pôde tocar automaticamente: ", error);
+            });
+            
             document.querySelector('.botao-surpresa').style.display = 'none';
-            
-            // Rola a página suavemente para o início do conteúdo
             window.scrollTo({ top: 100, behavior: 'smooth' });
         }
     </script>
